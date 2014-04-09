@@ -16,15 +16,12 @@
 <link rel="stylesheet" type="text/css" href="<%=path %>/ext/resources/css/ext-all.css" /> 
 <script type="text/javascript" src="<%=path %>/ext/bootstrap.js"></script>
 <script type="text/javascript" src="<%=path %>/ext/locale/ext-lang-zh_CN.js"></script>
-<script type="text/javascript">
-	Ext.onReady(function(){
-		Ext.MessageBox.alert("hello","hello world");
-	});
-</script>
 
-<title>Insert title here</title>
+<script type="text/javascript" src="<%=path %>/js/hello.js"></script>
+
+<title>Extjs4.2 Learning</title>
 </head>
 <body>
-TESE
+Hi,Extjs4.2!
 </body>
 </html>

@@ -312,7 +312,7 @@ Ext.onReady(function(){
 		renderTo:Ext.getBody()
 	});*/
 	
-	Ext.create('Ext.form.Panel',{
+	/*Ext.create('Ext.form.Panel',{
 		items:[{
 			xtype:'timefield',
 			name:'beginTime',
@@ -366,8 +366,72 @@ Ext.onReady(function(){
 			xtype:'displayfield',
 			fieldLabel:'observer',
 			value:'hello'
-		}],
+		},{
+	        xtype: 'fieldcontainer',
+	        fieldLabel: 'Last Three Jobs',
+	        labelWidth: 100,
+	
+	        // The body area will contain three text fields, arranged
+	        // horizontally, separated by draggable splitters.
+	        layout: 'table',
+	        items: [{
+	            xtype: 'textfield',
+	            flex: 1
+	        }, {
+	            xtype: 'splitter'
+	        }, {
+	            xtype: 'textfield',
+	            flex: 1
+	        }, {
+	            xtype: 'splitter'
+	        }, {
+	            xtype: 'textfield',
+	            flex: 1
+	        }]
+        }],
+
+		renderTo:Ext.getBody()
+	});*/
+
+Ext.create('Ext.form.Panel',{
+	width:500,
+	items:[{
+        	xtype:'filefield',
+        	fieldLabel:'FileUpload',
+        	name:'file',
+        	//labelWidth:100,
+        	width:500,
+        	//anchor:'50%',
+        	//flex:1,
+        	buttonText:'Please upload a file'
+        }],
+        buttons:[{
+        	text:'Upload',
+        	handler: function() {
+        		var form = this.up('form').getForm();
+        		if(/*form.isValid()*/true) {
+        			form.submit({
+        				url:'index.jsp',
+        				 success: function(form, action) {
+						       Ext.Msg.alert('Success', action.result.msg);
+						    },
+						 failure:function(form, action){
+						 	 switch (action.failureType) {
+					            case Ext.form.action.Action.CLIENT_INVALID:
+					                Ext.Msg.alert('Failure', 'Form fields may not be submitted with invalid values');
+					                break;
+					            case Ext.form.action.Action.CONNECT_FAILURE:
+					                Ext.Msg.alert('Failure', 'Ajax communication failed');
+					                break;
+					            case Ext.form.action.Action.SERVER_INVALID:
+					               Ext.Msg.alert('Failure', action.result.msg);
+					       }
+						 }
+        			});
+        		}
+        	}
+        }],
+	
 		renderTo:Ext.getBody()
 	});
 });
-

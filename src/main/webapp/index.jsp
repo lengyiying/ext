@@ -8,6 +8,7 @@
 			+ path + "/";
 	pageContext.setAttribute("basePath", basePath);
 %>
+<!-- combo test -->
 <!--   <% 
 // 	String bookName = request.getParameter("searchAllBook");
 // 	String book1 = "['JAVA1'],['JAVA2']";
@@ -23,6 +24,18 @@
 // 		response.getWriter().write(books);
 // 	}
 	%>-->
+	
+<!-- 	filefield test -->
+<%@page import="java.util.List"%>
+<%@ page import="org.apache.commons.fileupload.*" %>
+<%
+	DiskFileUpload upload = new DiskFileUpload();
+	upload.setHeaderEncoding("UTF-8");
+	List items = upload.parseRequest(HttpServletRequest);
+	
+%>
+
+
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>

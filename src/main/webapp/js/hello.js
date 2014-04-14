@@ -140,7 +140,7 @@ Ext.onReady(function(){
 	    			{text:'edit',menu:editMenu}]
 	});*/
 	
-	Ext.create('Ext.form.Panel',{
+	/*Ext.create('Ext.form.Panel',{
 		title:'Info',
 		width:800,
 		items:[
@@ -226,6 +226,146 @@ Ext.onReady(function(){
 			handler:function(){
 				this.up('form').getForm().reset();
 			}
+		},{
+			xtype:''
+		}],
+		renderTo:Ext.getBody()
+	});*/
+	
+	/*Ext.define('Person.Model',{
+		extend:'Ext.data.Model',
+		fields:[
+			{name: 'name',  type: 'string'},
+        	{name: 'age',   type: 'int', convert: null}
+		]
+	});
+	
+	
+	Ext.define('Person.Store',{
+		extend:'Ext.data.Store',
+		model:'Person.Model',
+		data:[
+		{name:'nly',age:25},
+		{name:'zzc',age:25}
+		]
+	});
+	
+	personStore = Ext.create('Person.Store');
+	
+	Ext.create('Ext.form.Panel',{
+		items:[
+		{
+			xtype:'combobox',
+			name:'personginfo',
+			fieldLabel:'Person',
+			store:personStore,
+			triggerAction:'all' ,
+			displayField:'name',
+			valueField:'age',
+			queryMode:'local',
+			tpl: Ext.create('Ext.XTemplate',
+		        '<tpl for=".">',
+		            '<div class="x-boundlist-item">{name} - {age}</div>',
+		        '</tpl>'
+			    ),
+		    displayTpl: Ext.create('Ext.XTemplate',
+		        '<tpl for=".">',
+		            '{name} - {age}',
+		        '</tpl>'
+	    		)
+		}
+		],
+		renderTo:Ext.getBody()
+	});*/
+	
+	//comboÔ¶³Ì½»»¥
+	/*Ext.define('BookInfoModel',{
+		extend:'Ext.data.Model',
+		fields:[{name:'bookName'}]
+	});
+	
+	Ext.define('BookInfoStore',{
+		extend:'Ext.data.Store',
+		model:'BookInfoModel',
+		proxy:{
+			type:'ajax',
+			url:'index.jsp',
+			reader:new Ext.data.ArrayReader({model:'BookInfoModel'})
+		}
+	});
+	
+	bookStore = Ext.create('BookInfoStore');
+	Ext.create('Ext.form.Panel',{
+		items:[
+		{
+			xtype:'combo',
+			name:'bookInfo',
+			fieldLabel:'Book list',
+			store:bookStore,
+			triggerAction:'all' ,
+			displayField:'bookName',
+			valueField:'bookName',
+			queryMode:'remote',
+			allQuery:'allBook',
+		}
+		],
+		renderTo:Ext.getBody()
+	});*/
+	
+	Ext.create('Ext.form.Panel',{
+		items:[{
+			xtype:'timefield',
+			name:'beginTime',
+			fieldLabel:'beginTime',
+			format:'H:i:s',
+			value:new Date(),
+			minValue:'08:00:00',
+			minText:'before minTime',
+			maxValue:'17:30:00',
+			increment:30,
+			maxText:'after maxTime',
+			invalidText:'invalid time',
+			listeners:{
+				change:function (newValue,oldValue,e) {
+					if(newValue > oldValue) {
+						Ext.Msg.alert('>','newValue > oldValue');
+					} else {
+						Ext.Msg.alert('<','newValue < oldValue');
+					}
+				}
+			}
+			
+		},{
+			xtype:'timefield',
+			name:'endTime',
+			fieldLabel:'endTime',
+			format:'H:i:s',
+			value:new Date(),
+			minValue:'08:00:00',
+			minText:'before minTime',
+			maxValue:'17:30:00',
+			increment:30,
+			maxText:'after maxTime',
+			invalidText:'invalid time'
+			
+		},{
+			xtype:'datefield',
+			name:'date',
+			fieldLabel:'Date',
+			value:new Date(),
+			minValue:new Date('2014-04-10'),
+			maxValue:new Date('2014-04-30'),
+			disabledDates: ["04/23/2014", "09/16/2003"],
+			disabledDatesText:'can not  choose this day',
+			disabledDays:  [0,5, 6],
+			disableDaysText: 'can not choose two days'
+		},{
+			xtype:'hidden',
+			name:'age'
+		},{
+			xtype:'displayfield',
+			fieldLabel:'observer',
+			value:'hello'
 		}],
 		renderTo:Ext.getBody()
 	});

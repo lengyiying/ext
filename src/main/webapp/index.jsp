@@ -8,6 +8,21 @@
 			+ path + "/";
 	pageContext.setAttribute("basePath", basePath);
 %>
+<!--   <% 
+// 	String bookName = request.getParameter("searchAllBook");
+// 	String book1 = "['JAVA1'],['JAVA2']";
+// 	String book2 = "['EXT1'],['EXT2']";
+// 	String books = "";
+	
+// 	if("allBook".equals(bookName)) {
+// 		books = "[" + book1 + "," +book2 +"]";
+// 		response.getWriter().write(books);
+// 		return;
+// 	} else {
+// 		books = "Nothing"; 
+// 		response.getWriter().write(books);
+// 	}
+	%>-->
 <!DOCTYPE html PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN" "http://www.w3.org/TR/html4/loose.dtd">
 <html>
 <head>

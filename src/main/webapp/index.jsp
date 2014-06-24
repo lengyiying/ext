@@ -28,11 +28,28 @@
 <!-- 	filefield test -->
 <%@page import="java.util.List"%>
 <%@ page import="org.apache.commons.fileupload.*" %>
+<%@ page import="javax.servlet.http.*" %>
 <%
 	DiskFileUpload upload = new DiskFileUpload();
 	upload.setHeaderEncoding("UTF-8");
-	List items = upload.parseRequest(HttpServletRequest);
+	 //'(List<String>)request.getHeaderNames();
 	
+		System.out.print(request.getHeaderNames());
+	
+	//if(request.getAuthType() != null) {
+		
+		List<FileItem> items = upload.parseRequest(request);
+		
+		String fileName = "";
+		
+		for(FileItem item:items) {
+			fileName = item.getName();
+			fileName = fileName.substring(fileName.lastIndexOf("\\")+1);
+		}
+		
+		String msg = "{success:true,file:'" + fileName + "'}";
+		response.getWriter().write(msg);
+	//}
 %>
 
 
